@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -28,7 +29,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         for ($i = 0; $i < 100; $i++) {
-            \App\Models\User::create([
+            User::firstOrcreate([
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'email_verified_at' => now(),

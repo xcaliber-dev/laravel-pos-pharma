@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "347701b711d4ad05acc0a8b484cc9bf2",
+    "content-hash": "8077088990436337abfc47764f4c016c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1342,30 +1342,30 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.3.0",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b"
+                "reference": "07d725813350c695c779382cbd6dac0ab8665537"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
-                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/07d725813350c695c779382cbd6dac0ab8665537",
+                "reference": "07d725813350c695c779382cbd6dac0ab8665537",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^7.0|^8.0",
-                "illuminate/filesystem": "^7.0|^8.0",
-                "illuminate/support": "^7.0|^8.0",
-                "php": "^7.2.5"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0|^9.0"
+                "illuminate/console": "^8.42",
+                "illuminate/filesystem": "^8.42",
+                "illuminate/support": "^8.42",
+                "illuminate/validation": "^8.42",
+                "php": "^7.3|^8.0"
             },
             "type": "library",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
                 "laravel": {
                     "providers": [
                         "Laravel\\Ui\\UiServiceProvider"
@@ -1394,10 +1394,9 @@
                 "ui"
             ],
             "support": {
-                "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v2.3.0"
+                "source": "https://github.com/laravel/ui/tree/v3.3.0"
             },
-            "time": "2020-09-09T12:07:59+00:00"
+            "time": "2021-05-25T16:45:33+00:00"
         },
         {
             "name": "league/commonmark",

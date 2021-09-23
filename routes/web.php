@@ -1,9 +1,12 @@
 <?php
 
-//use App\Http\Controllers\{
-//    DashboardController,
-//    CashierController
-//};
+use App\Http\Controllers\{
+    DashboardController,
+    CashierController,
+    SupplierController,
+    UserController,
+    ProfileController
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,11 +29,11 @@ Auth::routes();
 Route::redirect('/','/dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
     Route::resource('cashiers',CashierController::class)->parameters(['cashiers'=>'user']);
-    Route::resource('suppliers',SupplierController::class)->parameters(['suppliers'=>'user']);
-    Route::resource('user', 'UserController', ['except' => ['show']]);
-    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-    Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+    Route::resource('suppliers',SupplierController::class)->except('create','show');
+    Route::resource('user', UserController::class, ['except' => ['show']]);
+    Route::put('profile', [ProfileController::class,'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class,'edit'])->name('profile.edit');
+    Route::put('profile/password', [ProfileController::class,'password'])->name('profile.password');
 });
