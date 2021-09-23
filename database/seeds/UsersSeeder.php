@@ -1,10 +1,14 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+namespace Database\Seeders;
 
-class UsersTableSeeder extends Seeder
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -38,7 +42,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => $faker->e164PhoneNumber,
                 'alt_phone' => $faker->e164PhoneNumber,
                 'address' => $faker->streetAddress,
-                'role_id' =>$faker->boolean?2:3,
+                'role_id' => $faker->boolean ? 2 : 3,
             ]);
         }
     }
