@@ -114,31 +114,31 @@
             <ul class="navbar-nav">
                 <li class="nav-item" >
                     <a class="nav-link"
-                       href="#">
-                        <i class="ni ni-planet "></i> {{ __('Sale') }}
+                       href="{{ route('products.index') }}">
+                        <i class="ni ni-palette "></i> {{ __('Sale') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="#">
-                        <i class="ni ni-shop"></i> {{ __('Sellers') }}
+                       href="">
+                        <i class="ni ni-shop"></i> {{ __('Orders') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="#">
+                       href="{{ route('products.expire') }}">
                         <i class="ni ni-badge "></i> {{ __('Expire') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="#">
+                       href="{{ route('products.debt') }}">
                         <i class="ni ni-bullet-list-67 "></i> {{ __('Debt List') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="#">
+                       href="{{ route('products.not_left') }}">
                         <i class="ni ni-cart "></i> {{ __('Out Of Stock') }}
                     </a>
                 </li>
