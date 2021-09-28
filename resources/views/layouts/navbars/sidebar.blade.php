@@ -115,13 +115,19 @@
                 <li class="nav-item" >
                     <a class="nav-link"
                        href="{{ route('products.index') }}">
-                        <i class="ni ni-palette "></i> {{ __('Sale') }}
+                        <i class="ni ni-palette "></i> {{ __('Sell') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="">
-                        <i class="ni ni-shop"></i> {{ __('Orders') }}
+                       href="{{ route('orders.index') }}">
+                        <i class="ni ni-shop"></i> {{ __('Sellers (orders)') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{{ route('products.index') }}">
+                        <i class="ni ni-shop"></i> {{ __('Buy (products)') }}
                     </a>
                 </li>
                 <li class="nav-item">

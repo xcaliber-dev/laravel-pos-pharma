@@ -6,7 +6,8 @@ use App\Http\Controllers\{
     SupplierController,
     UserController,
     ProfileController,
-    ProductController
+    ProductController,
+    OrderController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('products/not-left', [ProductController::class,'notLeft'])->name('products.not_left');
     Route::get('products/debt', [ProductController::class,'debt'])->name('products.debt');
     Route::resource('products', ProductController::class)->except('create','show');
+
+    //orders
+    Route::resource('orders',OrderController::class);
 
     Route::resource('user', UserController::class, ['except' => ['show']]);
     Route::put('profile', [ProfileController::class,'update'])->name('profile.update');

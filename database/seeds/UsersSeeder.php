@@ -32,7 +32,7 @@ class UsersSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             User::firstOrcreate([
                 'name' => $faker->name,
                 'email' => $faker->email,

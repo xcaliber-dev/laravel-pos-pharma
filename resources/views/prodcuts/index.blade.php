@@ -45,6 +45,7 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col" style="font-size: 1rem">Name</th>
+                                    <th scope="col" style="font-size: 1rem">Barcode</th>
                                     <th scope="col" style="font-size: 1rem">Supplier</th>
                                     <th scope="col" style="font-size: 1rem">Price</th>
                                     <th scope="col" style="font-size: 1rem">No. Stock</th>
@@ -59,6 +60,9 @@
                                     <tr>
                                         <td style="font-size: 16px">
                                             {{ $product->name }}
+                                        </td>
+                                        <td style="font-size: 16px">
+                                            {!!  $product->barcode? DNS1D::getBarcodeSVG("$product->barcode", 'EAN13',1,44,'dark',true):"no barcode" !!}
                                         </td>
                                         <td style="font-size: 16px">
                                             {{ $product->supplier->name }}
@@ -153,17 +157,31 @@
                                 <input type="text" placeholder="name" id="name" name="name" value="{{ old('name') }}" class="form-control">
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="email">Supplier</label>
-                            <select class="custom-select" name="supplier_id">
-{{--                                <option >select a supplier</option>--}}
-                                @foreach($suppliers as $key=>$value)
-                                    <option value="{{$key}}">{{$value}}</option>
-                                @endforeach
-
-                            </select>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="barcode">Barcode</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-barcode"></i></span>
+                                        </div>
+                                        <input type="number" placeholder="barcode" id="barcode" name="barcode" value="{{ old('barcode') }}"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="email">Supplier</label>
+                                    <select class="custom-select" name="supplier_id">
+                                        @foreach($suppliers as $key=>$value)
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
 
                         <div class="form-row">
                             <div class="col">
@@ -173,7 +191,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                                         </div>
-                                        <input type='number' placeholder="price in IQD" min="3000" max="100000" id="price" name="price" value="{{ old('price') }}"
+                                        <input type='number' placeholder="price in IQD" min="3000" max="100000" id="price" name="price"
+                                               value="{{ old('price') }}"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -199,7 +218,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                 </div>
-                                <input type='date' placeholder="expire date" min='2021-09-22' max='2023-01-22' id="expire_at" name="expire_at" value="{{ old('expire_at') }}" class="form-control">
+                                <input type='date' placeholder="expire date" min='2021-09-22' max='2023-01-22' id="expire_at" name="expire_at"
+                                       value="{{ old('expire_at') }}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -286,7 +306,7 @@
                         <form action="${updateUrl}" method="POST" id="edit_products_form"
                           enctype="multipart/form-data">
                         @csrf
-                            @method('PUT')
+                        @method('PUT')
                         <div class="form-group">
                             <label for="name">Name</label>
                             <div class="input-group mb-4">
@@ -297,26 +317,42 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                  <div class="form-group">
+                                    <label for="barcode">Barcode</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-barcode"></i></span>
+                                        </div>
+                                        <input type="number" placeholder="barcode" id="barcode" name="barcode" value="${data.barcode}"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                   <div class="form-group">
                             <label for="email">Supplier</label>
                             <select class="custom-select" name="supplier_id">
-{{--                                <option >select a supplier</option>--}}
-                        @foreach($suppliers as $key=>$value)
+                                @foreach($suppliers as $key=>$value)
                         <option value="{{$key}}">{{$value}}</option>
-                                @endforeach
-
+                                        @endforeach
                         </select>
                     </div>
 
-                    <div class="form-row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="price">Price</label>
-                                <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
-                                    </div>
-                                    <input type='number' placeholder="price in IQD" min="3000" max="100000" id="price" name="price" value="${data.price}"
+                        </div>
+                    </div>
+
+
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
+                                </div>
+                                <input type='number' placeholder="price in IQD" min="3000" max="100000" id="price" name="price" value="${data.price}"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -347,11 +383,11 @@
                         <div class="form-group">
                             <label for="address">Dept</label>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="dept_yes" ${data.is_dept===1?'checked':''}  name="is_dept" value="1" class="custom-control-input">
+                                <input type="radio" id="dept_yes" ${data.is_dept === 1 ? 'checked' : ''}  name="is_dept" value="1" class="custom-control-input">
                                 <label class="custom-control-label" for="dept_yes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" id="dept_no" name="is_dept"  ${data.is_dept===0?'checked':''} value="0" class="custom-control-input">
+                                <input type="radio" id="dept_no" name="is_dept"  ${data.is_dept === 0 ? 'checked' : ''} value="0" class="custom-control-input">
                                 <label class="custom-control-label" for="dept_no">No</label>
                             </div>
                         </div>

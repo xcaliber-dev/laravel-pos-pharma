@@ -6,6 +6,7 @@ use  \Database\Seeders\{
     ProductSeeder,
     SupplierSeeder,
     UsersSeeder,
+
 };
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             SupplierSeeder::class,
             UsersSeeder::class,
             ProductSeeder::class,
+            OrderSeeder::class,
         ]);
     }
 }
