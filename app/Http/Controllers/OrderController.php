@@ -10,8 +10,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-
-
         $orders = Order::with([
             'product' => function ($query) {
                 return $query->select('id', 'name', 'supplier_id');
@@ -37,14 +35,17 @@ class OrderController extends Controller
         return view('orders.index', compact('orders','analysis'));
     }
 
+
+
+
     public function create()
     {
-        //
+        return view('orders.sell');
     }
 
     public function store(Request $request)
     {
-        //
+        return 'as';
     }
 
     public function show(Order $order)

@@ -114,7 +114,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item" >
                     <a class="nav-link"
-                       href="{{ route('sells.index') }}">
+                       href="{{ route('orders.create') }}">
                         <i class="ni ni-palette "></i> {{ __('Sell') }}
                     </a>
                 </li>

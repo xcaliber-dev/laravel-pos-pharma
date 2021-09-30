@@ -2,7 +2,7 @@
 
 @section('content')
 {{--    Header --}}
-<div class="header bg-primary pb-6">
+<div class="header bg-primary ">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
@@ -16,16 +16,76 @@
               <li class="breadcrumb-item active" aria-current="page">Sells</li>
             </ol>
           </nav>
-        </div>
+        </div><div class="col-lg-6 col-5 text-right">
+              <button type="button" class="btn btn btn-neutral"
+                      data-target="#addNewCashier">Open Camara
+              </button>
+          </div>
       </div>
     </div>
   </div>
 </div>
 
-<select class="form-control" id="camera-select"></select>
-        <button title="Play" class="btn btn-success btn-sm" id="play" type="button"
-          data-toggle="tooltip">Play</button>
-        <canvas width="320" height="240" id="webcodecam-canvas"></canvas>
+
+<div class="row justify-content-center">
+    <div class="col-lg-5 col-12 text-center">
+            <select class="form-control" id="camera-select"></select>
+            <button title="Play" class="btn btn-success btn-sm" id="play" type="button"
+                    data-toggle="tooltip">Play</button>
+            <canvas width="320" height="240" id="webcodecam-canvas"></canvas>
+    </div>
+
+    <div class="col-lg-5 col-12 text-center">
+        <div class="p-3 bg-white rounded">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="text-uppercase">Invoice</h1>
+                    <div class="billed"><span class="font-weight-bold text-uppercase">Billed:</span><span class="ml-1">Jasper Kendrick</span></div>
+                    <div class="billed"><span class="font-weight-bold text-uppercase">Date:</span><span class="ml-1">May 13, 2020</span></div>
+                    <div class="billed"><span class="font-weight-bold text-uppercase">Order ID:</span><span class="ml-1">#1345345</span></div>
+                </div>
+                <div class="col-md-6 text-right mt-3">
+                    <h4 class="text-danger mb-0">Rae jones</h4><span>bbbootstrap.com</span>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Custom oil painting (24 X 36 in.)</td>
+                            <td>10</td>
+                            <td>34</td>
+                            <td>340</td>
+                        </tr>
+                        <tr>
+                            <td>Digital illustraion paint(8.5 X 11 in.)</td>
+                            <td>12</td>
+                            <td>50</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Total</td>
+                            <td>940</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-right mb-3"><button class="btn btn-danger btn-sm mr-5" type="button">Pay Now</button></div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -126,39 +186,45 @@
 
 @push('js')
 
-<script type="text/javascript" src="{{ asset('qrcodelib.js') }}"></script>
+<script type="text/javascript" src="{{ asset('qrcodelib.js')  }}"></script>
 <script type="text/javascript" src="{{ asset('webcodecamjs.js') }}"></script>
 
 <script>
-  $(document).ready(function () {
-            @if (count($errors) > 0)
-            $('#addNewCashier').modal('show');
-            @endif
-        });
+    $(document).ready(function () {
+        @if (count($errors) > 0)
+        $('#addNewCashier').modal('show');
+        @endif
+    });
 
-        (function(undefined) {
-    "use strict";
-    function Q(el) {
-        if (typeof el === "string") {
-            var els = document.querySelectorAll(el);
-            return typeof els === "undefined" ? undefined : els.length > 1 ? els : els[0];
+    (function (undefined) {
+        function Q(el) {
+            if (typeof el === "string") {
+                let els = document.querySelectorAll(el);
+                return typeof els === "undefined" ? undefined : els.length > 1 ? els : els[0];
+            }
+            return el;
         }
-        return el;
-    }
-    var play = Q("#play"),
-    args = {
-        resultFunction: function(res) {
-            console.log(res.code);
-             // Write Ajax Here...
-        }
-        
-    };
-        var decoder = new WebCodeCamJS("#webcodecam-canvas").buildSelectMenu("#camera-select", "environment|back").init(args);
-        play.addEventListener("click", function() {
+
+        let play = Q("#play"),
+            args = {
+                resultFunction: function (res) {
+                    const product_id = res.code;
+                    console.log(product_id);
+                   $.post('{{ route('orders.store') }}', {
+                            _token:{{ csrf_token() }}
+                       }, function (res){
+                           console.log(res);
+                       }
+                   )
+                }
+            };
+
+        let decoder = new WebCodeCamJS("#webcodecam-canvas").buildSelectMenu("#camera-select", 'environment|back').init(args);
+        play.addEventListener("click", function () {
             decoder.play();
         }, false);
-      
-        document.querySelector("#camera-select").addEventListener("change", function() {
+
+        document.querySelector("#camera-select").addEventListener("change", function () {
             if (decoder.isInitialized()) {
                 decoder.stop().play();
             }

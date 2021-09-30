@@ -1,5 +1,5 @@
 /*!
- * WebCodeCamJS 2.7.0 javascript Bar code and QR code decoder 
+ * WebCodeCamJS 2.7.0 javascript Bar code and QR code decoder
  * Author: Tóth András
  * Web: http://atandrastoth.co.uk
  * email: atandrastoth@gmail.com
@@ -62,8 +62,8 @@ var WebCodeCamJS = function(element) {
             flipVertical: false,
             flipHorizontal: true,
             zoom: 1,
-            beep: './beep.mp3',
-            decoderWorker: './DecoderWorker.js',
+            beep: './../../public/beep.mp3',
+            decoderWorker: './../../public/DecoderWorker.js',
             brightness: 0,
             autoBrightnessValue: 0,
             grayScale: 0,
@@ -455,7 +455,7 @@ var WebCodeCamJS = function(element) {
                             sourceId: true
                         }];
                     } else {
-                        constraints.video.deviceId = undefined;  
+                        constraints.video.deviceId = undefined;
                     }
                     break;
                 case 'false':

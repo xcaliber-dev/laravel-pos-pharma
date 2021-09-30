@@ -45,8 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
     //orders
     Route::resource('orders',OrderController::class);
 
-    //sell
-    Route::resource('sells',SellController::class);
 
     Route::resource('user', UserController::class, ['except' => ['show']]);
     Route::put('profile', [ProfileController::class,'update'])->name('profile.update');
