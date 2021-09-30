@@ -78,7 +78,7 @@
                                                 <div><span class="font-weight-600 ">Product ID:</span> {{ $order->product->id }}</div>
                                                 <div><span class="font-weight-600 ">Product Name:</span> {{ $order->product->name }}</div>
                                                 <div><span class="font-weight-600 ">Supplier Name:</span> {{ $order->product->Supplier->name }}</div>
-                                                <div><span class="font-weight-600 ">{!!  $order->product->barcode? DNS1D::getBarcodeSVG("$order->product->barcode", 'EAN13',1,44,'dark',true):"no barcode" !!}</div>
+                                                <div><span class="font-weight-600 ">{!!  $order->product->barcode? DNS1D::getBarcodeSVG("$order->product->barcode", 'C128',1,53,'dark',true):"no barcode" !!}</div>
                                             </div>
                                         </td>
                                         <td style="font-size: 14px">
@@ -86,8 +86,7 @@
                                                 <div><span class="font-weight-600 ">Original Price:</span> {{ $order->org_price }}</div>
                                                 <div><span class="font-weight-600 ">Sold Price:</span> {{ $order->sold_price}}</div>
                                                 <div><span class="font-weight-600 ">Quantity:</span> {{ $order->quantity }}</div>
-                                                <div><span class="font-weight-600 ">Total Price:</span> {{ $order->total_price
- }}</div>
+                                                <div><span class="font-weight-600 ">Total Price:</span> {{ $order->total_price}}</div>
                                             </div>
                                         </td>
                                     </tr>

@@ -62,7 +62,7 @@
                                             {{ $product->name }}
                                         </td>
                                         <td style="font-size: 16px">
-                                            {!!  $product->barcode? DNS1D::getBarcodeSVG("$product->barcode", 'EAN13',1,44,'dark',true):"no barcode" !!}
+                                            {!!  $product->barcode? DNS1D::getBarcodeSVG("$product->barcode", 'C128',1,44,'dark',true):"no barcode" !!}
                                         </td>
                                         <td style="font-size: 16px">
                                             {{ $product->supplier->name }}
