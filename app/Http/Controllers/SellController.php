@@ -9,7 +9,7 @@ class SellController extends Controller
 {
     public function index()
     {
-        return view('order.sell');
+        return view('orders.sell');
     }
 
     public function create()
