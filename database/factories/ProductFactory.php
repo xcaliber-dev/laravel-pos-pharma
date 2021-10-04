@@ -25,7 +25,7 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'barcode'=> rand(1000000,9999999),
+            'barcode'=> rand(1,1000),
             'supplier_id' => Supplier::inRandomOrder()->first()->id,
             'price' => rand(1000, 100000),
             'stock' => rand(1, 100),

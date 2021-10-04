@@ -57,29 +57,29 @@
                                 </thead>
                                 <tbody>
                                 @foreach($products as $product)
-                                    <tr>
-                                        <td style="font-size: 16px">
+                                    <tr >
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             {{ $product->name }}
                                         </td>
-                                        <td style="font-size: 16px">
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             {!!  $product->barcode? DNS1D::getBarcodeSVG("$product->barcode", 'C128',1,44,'dark',true):"no barcode" !!}
                                         </td>
-                                        <td style="font-size: 16px">
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             {{ $product->supplier->name }}
                                         </td>
-                                        <td style="font-size: 16px">
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             <div> {{ $product->price}} IQD</div>
                                         </td>
-                                        <td style="font-size: 16px" class="">
+                                        <td style="font-size: 16px; padding-bottom: 60px" class="">
                                             {{ $product->stock }}
                                         </td>
-                                        <td style="font-size: 16px">
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             {{ \Carbon\Carbon::parse($product->created_at)->format('Y-m-d') }}
                                         </td>
-                                        <td style="font-size: 16px">
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             <span class=" {{ $product->expire_at>=now()?"":"text-danger" }}"> {{ $product->expire_at}}</span>
                                         </td>
-                                        <td style="font-size: 16px">
+                                        <td style="font-size: 16px; padding-bottom: 60px">
                                             {!!$product->is_dept?'<span class="badge badge-danger">Yes</span>':'<span class="badge badge-success">No</span>' !!}
                                         </td>
 

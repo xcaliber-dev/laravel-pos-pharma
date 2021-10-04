@@ -8,7 +8,6 @@
     <div class="row mt-5">
     </div>
     @include('layouts.footers.auth')
-    <img alt="QR Code" style="visibility: visible; margin=top:100px"  src="https://www.fib.iq/images/qr-codes/prod/FIB.png">
   </div>
 @endsection
 

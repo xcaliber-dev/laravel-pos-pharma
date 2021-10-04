@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //orders
     Route::resource('orders',OrderController::class);
+    Route::post('/get-data',[OrderController::class,'getData'])->name('orders.getData');
+    Route::post('/undo-order',[OrderController::class,'undoOrder'])->name('orders.undoOrder');
+    Route::get('invoice',[OrderController::class,'invoice'])->name('orders.invoice');
 
 
     Route::resource('user', UserController::class, ['except' => ['show']]);

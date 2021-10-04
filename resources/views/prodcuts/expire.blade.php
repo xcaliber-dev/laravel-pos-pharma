@@ -67,10 +67,7 @@
                                             {{ \Carbon\Carbon::parse($product->created_at)->format('Y-m-d') }}
                                         </td>
                                         <td style="font-size: 16px">
-                                            @php
-                                              $now = \Carbon\Carbon::now()->format('Y-m-d');
-                                            @endphp
-                                            <span class=" {{ $product->expire_at>$now?"":"text-danger" }}">  {{ $product->expire_at}}</span>
+                                            <span class=" {{ $product->expire_at>=now()?"":"text-danger" }}">  {{ $product->expire_at}}</span>
                                         </td>
                                         <td style="font-size: 16px">
                                             {!!$product->is_dept?'<span class="badge badge-danger">Yes</span>':'<span class="badge badge-success">No</span>' !!}
