@@ -119,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/laravel-frontend-presets/argon" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/milon/barcode" />
+      <path value="$PROJECT_DIR$/vendor/ladumor/laravel-pwa" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

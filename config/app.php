@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Milon\Barcode\BarcodeServiceProvider::class,
+        Ladumor\LaravelPwa\PWAServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,6 +230,7 @@ return [
 
         'DNS1D' => 'Milon\Barcode\Facades\DNS1DFacade',
         'DNS2D' => 'Milon\Barcode\Facades\DNS2DFacade',
+        'LaravelPwa' => \Ladumor\LaravelPwa\LaravelPwa::class,
 
     ],
 

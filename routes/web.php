@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('suppliers',SupplierController::class)->except('create','show');
 
     //products
-    Route::get('products/expire', [ProductController::class,'expire'])->name('products.expire');
+    Route::get('products/expire', [ProductController::class,'expire'])->name('products.expire')->middleware('password.confirm');
     Route::get('products/not-left', [ProductController::class,'notLeft'])->name('products.not_left');
     Route::get('products/debt', [ProductController::class,'debt'])->name('products.debt');
     Route::resource('products', ProductController::class)->except('create','show');
